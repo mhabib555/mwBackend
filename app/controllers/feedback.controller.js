@@ -65,3 +65,17 @@ exports.sendFeedback = (req, res) => {
     }
   });
 };
+
+
+exports.all = (req, res) => {
+  Feedback.findAll({})
+  .then(data => {
+    res.send({
+      'data' : data
+    });
+  })
+  .catch(err => {
+    res.status(500).send({ message: err.message });
+  });
+
+};

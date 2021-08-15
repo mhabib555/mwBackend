@@ -12,4 +12,10 @@ module.exports = function(app) {
 
   app.post("/api/sendfeedback", controller.sendFeedback);
 
+  app.get(
+    "/api/admin/feedback/all",
+    [authJwt.verifyToken, authJwt.isAdmin],
+    controller.all
+  );
+
 };
